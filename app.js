@@ -12,7 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post('/wfh', function(req, res) {
     request('http://wfh.ninja/quote', function(err, ninjaRes, body) {
-        res.send('I\m working from home this morning because ' + _.sample(JSON.parse(body)).text);
+        res.json({
+            text: 'I\m working from home this morning because ' + _.sample(JSON.parse(body)).text
+        });
     });
 });
 
